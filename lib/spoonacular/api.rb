@@ -24,10 +24,3 @@ class Spoonacular
 		return "#{@uri}?#{arg}"
 	end
 end
-
-# These code snippets use an open-source library.
-# response = Unirest.get "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=apples%2Cflour%2Csugar&limitLicense=false&number=5&ranking=1",
-#   headers:{
-#     "X-Mashape-Key" => "bL25HAnJnTmshesbSJQ5LjSOmJkIp1mJIZdjsnMZ1tzYA0sjW9",
-#     "Accept" => "application/json"
-#   }
