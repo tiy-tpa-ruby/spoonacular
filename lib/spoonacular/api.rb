@@ -1,26 +1,17 @@
-class Spoonacular
-	def initialize(key)
-		@key ||= key
-		@uri = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients"
+module Spoonacular
+
+	class API
+		def initialize(key)
+			@key ||= key
+		end
+
+		def find_by_ingredients(ingredients, options={})
+			method = "/recipes/findByIngredients"
+			query = "ingredients=#{ingredients.querify}&#{options.querify}"
+			uri = Spoonacular.build_endpoint(method, query)
+			response = Spoonacular.get({key: @key, uri: uri, json: true})
+			return response.parsed_response
+		end
 	end
 
-	def find_by_ingredients(options)
-		ingredients = options[:ingredients].join("%2C")
-		limit_license = options[:limit_license] || false
-		number = options[:number] || 5
-		ranking = options[:ranking] || 1
-		arg = "ingredients=#{ingredients}&limitLicense=#{limit_license}&number=#{number}&ranking=#{ranking}"
-		response = HTTParty.get build_query(arg),
-		headers: {
-			"X-Mashape-Key" => @key,
-			"Accept" => "application/json"
-		}
-		return response
-	end
-
-	private
-
-	def build_query(arg)
-		return "#{@uri}?#{arg}"
-	end
 end
