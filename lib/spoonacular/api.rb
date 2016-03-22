@@ -36,6 +36,43 @@ module Spoonacular
 			response = Spoonacular.get({key: @key, uri: uri})
 			return response.parsed_response
 		end
+
+		def find_similar_recipes(id)
+			method = "/recipes/#{id}/similar"
+			uri = Spoonacular.build_endpoint(method, "")
+			response = Spoonacular.get({key: @key, uri: uri})
+			return response.parsed_response
+		end
+
+		def search_grocery_products(options={})
+			method = "/food/products/search"
+			query = "#{options.querify}"
+			uri = Spoonacular.build_endpoint(method, query)
+			response = Spoonacular.get({key: @key, uri: uri})
+			return response.parsed_response
+		end
+
+		def search_recipes(options={})
+			method = "/recipes/search"
+			query = "#{options.querify}"
+			uri = Spoonacular.build_endpoint(method, query)
+			response = Spoonacular.get({key: @key, uri: uri})
+			return response.parsed_response
+		end
+
+		def get_product_information(id)
+			method = "/food/products/#{id}"
+			uri = Spoonacular.build_endpoint(method, "")
+			response = Spoonacular.get({key: @key, uri: uri})
+			return response.parsed_response
+		end
+
+		def get_recipe_information(id)
+			method = "/recipes/#{id}/information"
+			uri = Spoonacular.build_endpoint(method, "")
+			response = Spoonacular.get({key: @key, uri: uri})
+			return response.parsed_response
+		end
 	end
 
 end
