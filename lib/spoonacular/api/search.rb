@@ -1,22 +1,6 @@
 module Spoonacular
-
+	
 	class API
-		def initialize(key)
-			@key ||= key
-		end
-
-		# These code snippets use an open-source library.
-# response = Unirest.post "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/classify",
-#   headers:{
-#     "X-Mashape-Key" => "PHc0EwDwKemshJa23OrOrQZI9aWQp1xteNujsnMD9OKM22A13P",
-#     "Content-Type" => "application/json",
-#     "Accept" => "application/json"
-#   }
-#   "{\"title\":\"Kroger Vitamin A & D Reduced Fat 2% Milk\",\"upc\":\"\",\"plu_code\":\"\"}"
-
-
-
-
 		def autocomplete_ingredient_search(ingredient)
 			method = "/food/ingredients/autocomplete"
 			query = "query=#{ingredient}"
@@ -71,22 +55,6 @@ module Spoonacular
 			response = Spoonacular.get({key: @key, uri: uri})
 			return response.parsed_response
 		end
-
-		def get_product_information(id)
-			method = "/food/products/#{id}"
-			uri = Spoonacular.build_endpoint(method, "")
-			response = Spoonacular.get({key: @key, uri: uri})
-			return response.parsed_response
-		end
-
-		def get_recipe_information(id)
-			method = "/recipes/#{id}/information"
-			uri = Spoonacular.build_endpoint(method, "")
-			response = Spoonacular.get({key: @key, uri: uri})
-			return response.parsed_response
-		end
-
-
 	end
-
+	
 end
