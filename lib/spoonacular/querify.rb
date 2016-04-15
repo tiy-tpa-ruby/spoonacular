@@ -8,7 +8,7 @@ class Object
 		elsif self.is_a? Hash
 			result = []
 			self.each do |key, value|
-				result << "#{key.to_s.to_camel_case}=#{value}"
+				result << "#{key.to_s.to_camel_case}=#{value.querify}"
 			end
 			return result.join("&")
 		end

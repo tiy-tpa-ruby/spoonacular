@@ -15,6 +15,9 @@ module Spoonacular
 
 	def self.post(options)
 		headers = {"X-Mashape-Key" => options[:key]}
+		headers["Accept"] = "application/json" if options[:json]
+		headers["Content-Type"] = "application/json" if options[:content]
+		params = options[:params]
 		response = HTTParty.post options[:uri], headers: headers
 		return response
 	end
