@@ -1,19 +1,44 @@
 module Spoonacular
 
 	class API
-		def classify_grocery_product(object)
-			method = "/food/products/classify"
-			uri = Spoonacular.build_endpoint(method, "")
-			response = Spoonacular.post({key: @key, json: true, content: true, params: object})
+		def match_recipes_to_calories(target_calories, time_frame)
+			method = "/recipes/mealplans/generate"
+			query = "targetCalories=#{target_calories}&timeFrame=#{time_frame}"
+			uri = Spoonacular.build_endpoint(method, query)
+			response = Spoonacular.get({key: @key, uri: uri})
 			return response
 		end
-		# These code snippets use an open-source library.
-# response = Unirest.post "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/classify",
-#   headers:{
-#     "Content-Type" => "application/json",
-#     "Accept" => "application/json"
-#   }
-#   "{\"title\":\"Dale Bananas\",\"upc\":\"\",\"plu_code\":\"\"}"
+
+		def summarize_recipe(id)
+			method = "/recipes/#{id}/summary"
+			uri = Spoonacular.build_endpoint(method, "")
+			response = Spoonacular.get({key: @key, uri: uri})
+			return response
+		end
+
+		def visualize_ingredients(options={})
+			method = "/recipes/visualizeIngredients"
+			uri = Spoonacular.build_endpoint(method, "")[0..-2]
+			params = "#{options.querify}"
+			response = Spoonacular.post({key: @key, uri: uri, content_form: true, params: params})
+			return response
+		end
+
+		def visualize_nutrition(options={})
+			method = "/recipes/visualizeNutrition"
+			uri = Spoonacular.build_endpoint(method, "")[0..-2]
+			params = "#{options.querify}"
+			response = Spoonacular.post({key: @key, uri: uri, content_form: true, params: params})
+			return response
+		end
+
+		def visualize_price_breakdown(options={})
+			method = "/recipes/visualizePriceEstimator"
+			uri = Spoonacular.build_endpoint(method, "")[0..-2]
+			params = "#{options.querify}"
+			response = Spoonacular.post({key: @key, uri: uri, content_form: true, params: params})
+			return response
+		end
 	end
 
 end
