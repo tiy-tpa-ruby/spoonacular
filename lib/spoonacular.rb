@@ -1,4 +1,4 @@
-require 'httparty'
+require 'unirest'
 
 require 'spoonacular/version'
 require 'spoonacular/request'

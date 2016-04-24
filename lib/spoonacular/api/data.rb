@@ -5,14 +5,14 @@ module Spoonacular
 			method = "/food/products/#{id}"
 			uri = Spoonacular.build_endpoint(method, "")
 			response = Spoonacular.get({key: @key, uri: uri})
-			return response.parsed_response
+			return response
 		end
 
 		def get_recipe_information(id)
 			method = "/recipes/#{id}/information"
 			uri = Spoonacular.build_endpoint(method, "")
 			response = Spoonacular.get({key: @key, uri: uri})
-			return response.parsed_response
+			return response
 		end
 	end
 	
