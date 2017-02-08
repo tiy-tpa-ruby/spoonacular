@@ -13,5 +13,5 @@ Gem::Specification.new do |s|
   s.homepage = 'http://rubygems.org/gems/spoonacular'
   s.license = 'MIT'
 
-  s.add_runtime_dependency 'unirest', '~> 1.1', '>= 1.1.2'
+  s.add_runtime_dependency 'httpclient'
 end

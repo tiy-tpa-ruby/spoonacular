@@ -1,4 +1,4 @@
-require 'unirest'
+require 'httpclient'
 
 require 'spoonacular/version'
 require 'spoonacular/request'
