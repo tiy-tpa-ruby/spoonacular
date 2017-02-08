@@ -2,7 +2,7 @@ $:.push File.expand_path('../lib', __FILE__)
 require 'spoonacular/version'
 
 Gem::Specification.new do |s|
-  s.name = 'Spoonacular'
+  s.name = 'spoonacular'
   s.version = Spoonacular::VERSION
   s.date = '2016-03-16'
   s.summary = "Spoonacular-gem"
